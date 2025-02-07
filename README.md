@@ -63,3 +63,25 @@ air init
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.4
 golangci-lint
 ```
+
+### Testing
+
+```sh
+go install github.com/stretchr/testify
+```
+
+```go
+// Standard testing
+func TestWithoutTestify(t *testing.T) {
+    result := SomeFunction()
+    if result != expectedValue {
+        t.Errorf("Expected %v, got %v", expectedValue, result)
+    }
+}
+
+// With testify
+func TestWithTestify(t *testing.T) {
+    result := SomeFunction()
+    assert.Equal(t, expectedValue, result, "they should be equal")
+}
+```
