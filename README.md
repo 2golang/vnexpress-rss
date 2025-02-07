@@ -40,3 +40,25 @@
 <enclosure type="image/jpeg" length="1200" url="https://i1-vnexpress.vnecdn.net/2025/02/06/afp-20250123-36vm3wf-v1-highre-6597-7613-1738846835.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=EZLAecVUZhLBSg818oeXbA"/>
 </item>
 ```
+
+## Development
+
+- [Live reload go apps with air](https://github.com/air-verse/air)
+- [Go linter with golangci-lint](https://golangci-lint.run/welcome/install/)
+
+```sh
+go env GOPATH
+ls $(go env GOPATH)/bin
+#  Add Go Bin Directory to PATH
+# ~/.zshrc
+export PATH="$(go env GOPATH)/bin:$PATH"
+# init
+air init
+```
+
+### Linter
+
+```sh
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.63.4
+golangci-lint
+```
