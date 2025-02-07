@@ -45,6 +45,7 @@
 
 - [Live reload go apps with air](https://github.com/air-verse/air)
 - [Go linter with golangci-lint](https://golangci-lint.run/welcome/install/)
+- [Gin gonic document](https://gin-gonic.com/docs/)
 
 ```sh
 go env GOPATH
