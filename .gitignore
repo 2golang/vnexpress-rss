@@ -34,6 +34,6 @@ info
 *.code-workspace
 *.sublime*
 .idea/
-.vscode/launch.json
+!.vscode/launch.json
 server/db-data/redis/dump.rdb
-.vscode/settings.json
+!.vscode/settings.json

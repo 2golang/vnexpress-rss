@@ -1,0 +1,11 @@
+{
+  "files.eol": "\n",
+  "go.toolsManagement.autoUpdate": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintOnSave": "package",
+  "go.formatTool": "gofmt",
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  }
+}
