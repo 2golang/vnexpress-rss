@@ -1,5 +1,17 @@
+basePath: /v1
+host: localhost:8080
 info:
-  contact: {}
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is api documentation for VnExpress RSS API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: VnExpress RSS API
+  version: "1.0"
 paths:
   /articles:
     get:
@@ -14,6 +26,8 @@ paths:
           schema:
             additionalProperties: true
             type: object
+      security:
+      - Bearer: []
       summary: List all articles
       tags:
       - articles
@@ -36,7 +50,15 @@ paths:
           schema:
             additionalProperties: true
             type: object
+      security:
+      - Bearer: []
       summary: Get article by ID
       tags:
       - articles
+securityDefinitions:
+  Bearer:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

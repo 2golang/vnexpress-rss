@@ -1,11 +1,30 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "This is api documentation for VnExpress RSS API",
+        "title": "VnExpress RSS API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
     },
+    "host": "localhost:8080",
+    "basePath": "/v1",
     "paths": {
         "/articles": {
             "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
                 "description": "Get a list of all available articles",
                 "consumes": [
                     "application/json"
@@ -30,6 +49,11 @@
         },
         "/articles/{id}": {
             "get": {
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
                 "description": "Get article details by its ID",
                 "consumes": [
                     "application/json"
@@ -60,6 +84,14 @@
                     }
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "description": "Type \"Bearer\" followed by a space and JWT token.",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

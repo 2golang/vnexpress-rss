@@ -88,11 +88,11 @@ func TestWithTestify(t *testing.T) {
 
 ### Api Doc
 
+- [Swaggo](https://github.com/swaggo/swag)
 - [Gin Swagger](https://pkg.go.dev/github.com/swaggo/gin-swagger@v1.6.0#section-readme)
 
 How to update api doc
 
 ```sh
-go generate ./..
 make docs_generate
 ```

@@ -11,6 +11,25 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// @title           VnExpress RSS API
+// @version         1.0
+// @description     This is api documentation for VnExpress RSS API
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   API Support
+// @contact.url    http://www.swagger.io/support
+// @contact.email  support@swagger.io
+
+// @license.name  Apache 2.0
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host      localhost:8080
+// @BasePath  /v1
+// @securityDefinitions.apikey Bearer
+// @in header
+// @name Authorization
+// @description Type "Bearer" followed by a space and JWT token.
+
 func setupRoutes(r *gin.Engine) {
 	api := r.Group("/v1")
 	// public routes
@@ -31,7 +50,7 @@ func setupRoutes(r *gin.Engine) {
 		articleRoutes.GET("/:id", articles.GetArticleById)
 	}
 	// api docs
-	docs.SwaggerInfo.BasePath = "/api/v1"
+	docs.SwaggerInfo.BasePath = "/v1"
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
 
