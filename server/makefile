@@ -10,6 +10,8 @@ help:
 	@echo "  start Start Server"
 	@echo "  start-dev Watch changes"
 	@echo "  lint Lint code"
+	@echo "  install_packages Install packages"
+	@echo "  update_packages Update packages"
 
 setup:
 	@go install go.uber.org/nilaway/cmd/nilaway@latest
@@ -22,3 +24,10 @@ start-dev:
 lint:
 	@echo "Linting..."
 	@golangci-lint run
+install_packages:
+	@echo "Installing packages..."
+	@go mod tidy
+update_packages:
+	@echo "Updating packages..."
+	@go get -u
+	@go mod tidy
