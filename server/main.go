@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 
+	docs "github.com/2golang/vnexpress-rss/docs"
 	"github.com/2golang/vnexpress-rss/handlers/articles"
 	"github.com/2golang/vnexpress-rss/middleware"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func setupRoutes(r *gin.Engine) {
@@ -27,6 +30,9 @@ func setupRoutes(r *gin.Engine) {
 		articleRoutes.GET("", articles.ListArticles)
 		articleRoutes.GET("/:id", articles.GetArticleById)
 	}
+	// api docs
+	docs.SwaggerInfo.BasePath = "/api/v1"
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }
 
 func main() {

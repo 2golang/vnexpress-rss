@@ -85,3 +85,14 @@ func TestWithTestify(t *testing.T) {
     assert.Equal(t, expectedValue, result, "they should be equal")
 }
 ```
+
+### Api Doc
+
+- [Gin Swagger](https://pkg.go.dev/github.com/swaggo/gin-swagger@v1.6.0#section-readme)
+
+How to update api doc
+
+```sh
+go generate ./..
+make docs_generate
+```
