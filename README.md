@@ -90,6 +90,7 @@ func TestWithTestify(t *testing.T) {
 
 - [Swaggo](https://github.com/swaggo/swag)
 - [Gin Swagger](https://pkg.go.dev/github.com/swaggo/gin-swagger@v1.6.0#section-readme)
+- [Swaggo has as issue with Bearer Authentication](https://github.com/swaggo/gin-swagger/issues/90)
 
 How to update api doc
 
