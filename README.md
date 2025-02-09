@@ -97,3 +97,7 @@ How to update api doc
 ```sh
 make docs_generate
 ```
+
+### Env
+
+- [Godotenv](https://github.com/joho/godotenv)

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	config "github.com/2golang/vnexpress-rss/config"
 	docs "github.com/2golang/vnexpress-rss/docs"
 	"github.com/2golang/vnexpress-rss/handlers/articles"
 	"github.com/2golang/vnexpress-rss/middleware"
@@ -55,12 +56,14 @@ func setupRoutes(r *gin.Engine) {
 }
 
 func main() {
+	// Load Environment
+	config.LoadEnv("")
 	// Creates a gin router with default middleware:
 	r := gin.Default()
 	// Setup routes
 	setupRoutes(r)
 	// listen and serve on 0.0.0.0:8080 (for windows "localhost:8080"
-	if err := r.Run(fmt.Sprintf(":%v", 8080)); err != nil {
+	if err := r.Run(fmt.Sprintf(":%v", config.GetEnv().Port)); err != nil {
 		fmt.Println("Failed to start server:", err)
 	}
 }
