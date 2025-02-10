@@ -1,0 +1,54 @@
+services:
+  app:
+    container_name: golang_app_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2025:2025"
+    environment:
+      - PORT=2025
+      - ENV=development
+      - DB_CONNECTION_STRING=postgres://postgres:123456@postgres:5432/golang_rss
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - golang
+  postgres:
+    container_name: golang_postgres_dev
+    image: postgres:16.6
+    shm_size: 1g
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - ./.docker/postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql
+      - golang_postgres_dev:/var/lib/postgresql/data
+    networks:
+      - golang
+  pgadmin:
+    container_name: golang_pgadmin_dev
+    image: dpage/pgadmin4:8.14.0
+    shm_size: 1g
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@postgres.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - golang_pgadmin_dev:/var/lib/pgadmin
+    networks:
+      - golang
+networks:
+  golang:
+volumes:
+  golang_postgres_dev:
+  golang_pgadmin_dev:

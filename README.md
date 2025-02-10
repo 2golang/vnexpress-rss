@@ -101,3 +101,25 @@ make docs_generate
 ### Env
 
 - [Godotenv](https://github.com/joho/godotenv)
+
+### ORM and Data Migration
+
+#### Data Migration and Schema
+
+- [Goose](https://pressly.github.io/goose/installation/#homebrew)
+
+```sh
+make db-create-migration [name]
+make db-status
+make db-up
+make db-down
+make db-reset
+```
+
+## Deployment
+
+### Development
+
+```sh
+docker-compose -f docker-compose-development.yml up -d
+```

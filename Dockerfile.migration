@@ -1,0 +1,18 @@
+FROM golang:1.23.5-alpine
+
+# Install goose
+RUN go install github.com/pressly/goose/v3/cmd/goose@latest
+
+WORKDIR /migrations
+
+# Copy migration files and scripts
+COPY server/db/migrations/*.sql ./migrations/
+COPY server/scripts/migrate.sh ./
+
+RUN chmod +x migrate.sh
+
+# Set environment variables
+ENV GOOSE_DRIVER=postgres
+ENV MIGRATIONS_PATH=/migrations
+
+ENTRYPOINT ["./migrate.sh"]
