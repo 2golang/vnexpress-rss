@@ -7,12 +7,8 @@ WORKDIR /migrations
 
 # Copy migration files and scripts
 COPY server/db/migrations/*.sql ./migrations/
-COPY server/scripts/migrate.sh ./
-
-RUN chmod +x migrate.sh
+COPY server/Makefile ./Makefile
 
 # Set environment variables
-ENV GOOSE_DRIVER=postgres
-ENV MIGRATIONS_PATH=/migrations
 
-ENTRYPOINT ["./migrate.sh"]
+ENTRYPOINT ["make", "migrate_up"]
